@@ -1,34 +1,38 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-
 plugins {
-	id("org.springframework.boot") version "2.4.0"
-	id("io.spring.dependency-management") version "1.0.10.RELEASE"
-	kotlin("jvm") version "1.4.10"
-	kotlin("plugin.spring") version "1.4.10"
+    kotlin("jvm") version "1.4.20"
+    id("com.github.ben-manes.versions") version "0.36.0"
 }
 
-group = "com.papuguys"
-version = "0.0.1-SNAPSHOT"
-java.sourceCompatibility = JavaVersion.VERSION_11
+subprojects {
 
-repositories {
-	mavenCentral()
-}
+    apply {
+        plugin("org.jetbrains.kotlin.jvm")
+    }
 
-dependencies {
-	implementation("org.springframework.boot:spring-boot-starter")
-	implementation("org.jetbrains.kotlin:kotlin-reflect")
-	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
-	testImplementation("org.springframework.boot:spring-boot-starter-test")
-}
+    group = "com.papuguys"
+    version = "0.0.1-SNAPSHOT"
+    java.sourceCompatibility = JavaVersion.VERSION_11
 
-tasks.withType<KotlinCompile> {
-	kotlinOptions {
-		freeCompilerArgs = listOf("-Xjsr305=strict")
-		jvmTarget = "11"
-	}
-}
+    repositories {
+        mavenCentral()
+    }
 
-tasks.withType<Test> {
-	useJUnitPlatform()
+    dependencies {
+        implementation(kotlin("stdlib"))
+        implementation("org.jetbrains.kotlin:kotlin-reflect")
+        implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+    }
+
+    val implementation by configurations
+
+    tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
+        kotlinOptions {
+            freeCompilerArgs = listOf("-Xjsr305=strict")
+            jvmTarget = "1.8"
+        }
+    }
+
+    tasks.withType<Test> {
+        useJUnitPlatform()
+    }
 }

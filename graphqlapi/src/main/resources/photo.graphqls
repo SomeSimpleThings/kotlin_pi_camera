@@ -1,0 +1,14 @@
+type Query {
+    photos: [Photo]
+}
+
+type Photo {
+    id: ID!
+    name: String
+}
+
+type Mutation {
+    newPhoto(name: String!) : Photo!
+    deletePhoto(id: ID!) : Boolean
+    updatePhoto(id:ID!, name: String!) : Photo!
+}

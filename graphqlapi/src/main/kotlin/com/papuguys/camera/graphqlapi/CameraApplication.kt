@@ -1,4 +1,4 @@
-package com.papuguys.camera
+package com.papuguys.camera.graphqlapi
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
