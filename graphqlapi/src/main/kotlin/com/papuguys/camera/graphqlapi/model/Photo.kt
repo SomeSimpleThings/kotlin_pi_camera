@@ -8,4 +8,5 @@ data class Photo(var name: String, var path: String) {
 
     @Id
     var id: String = ""
+    var timestamp: Long = 0
 }
