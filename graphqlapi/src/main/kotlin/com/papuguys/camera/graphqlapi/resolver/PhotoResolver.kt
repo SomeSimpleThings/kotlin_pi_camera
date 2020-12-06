@@ -20,7 +20,7 @@ class PhotoQueryResolver(
 class PhotoMutationResolver(val photoService: PhotoService) : GraphQLMutationResolver {
 
     fun newPhoto(name: String): Photo {
-        return photoService.createPhoto(name)
+        return photoService.getPhoto()
     }
 
     fun updatePhoto(id: String, name: String): Photo {

@@ -10,6 +10,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter")
     implementation("org.springframework.boot:spring-boot-starter-data-mongodb")
     implementation("org.springframework.boot:spring-boot-starter-web")
+    implementation("org.springframework.boot:spring-boot-starter-webflux")
 
     implementation("com.graphql-java:graphql-spring-boot-starter:5.0.2")
     implementation("com.graphql-java:graphiql-spring-boot-starter:5.0.2")
