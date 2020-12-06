@@ -5,6 +5,7 @@ type Query {
 type Photo {
     id: ID!
     name: String
+    path: String
 }
 
 type Mutation {
