@@ -1,4 +1,5 @@
 type Query {
+    photo(id:String!): Photo
     photos: [Photo]
 }
 

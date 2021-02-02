@@ -6,4 +6,7 @@ import org.springframework.stereotype.Repository
 
 @Repository
 interface PhotoRepository : MongoRepository<Photo, String> {
+
+    fun findFirstByPathNull(): Photo?
+    fun findAllByPathIsNotNull(): List<Photo>
 }

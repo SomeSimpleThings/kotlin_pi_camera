@@ -1,6 +1,10 @@
 plugins {
-    kotlin("jvm") version "1.4.20"
+    kotlin("jvm") version "1.4.21"
     id("com.github.ben-manes.versions") version "0.36.0"
+}
+
+repositories {
+    mavenCentral()
 }
 
 subprojects {
