@@ -13,14 +13,13 @@ import org.springframework.http.client.reactive.ClientHttpConnector
 import reactor.core.publisher.Mono
 
 import reactor.netty.http.client.HttpClient
-import java.time.Duration
 
 
 @Bean
 fun localApiClient(): WebClient {
     return WebClient.builder()
         .exchangeStrategies(extendedExchangeStrategies())
-        .baseUrl("http://192.168.1.18:5000/cam/api/v1/photos/")
+        .baseUrl("http://192.168.1.17:5000/cam/api/v1/photos/")
         .clientConnector(connector())
         .build()
 }

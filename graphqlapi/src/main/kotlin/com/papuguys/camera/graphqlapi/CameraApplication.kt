@@ -10,6 +10,6 @@ import org.springframework.scheduling.annotation.EnableScheduling
 class CameraApplication
 
 fun main(args: Array<String>) {
-    //RaspberryCameraApi.NativeLibInstaller.install()
+//    RaspberryCameraApi.NativeLibInstaller.install()
     runApplication<CameraApplication>(*args)
 }
