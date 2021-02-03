@@ -40,6 +40,7 @@ class PhotoService(
             getExternalPhoto().block()?.let { bytes ->
                 file.writeBytes(bytes)
                 it.path = file.path
+                it.fileSize = bytes.size
                 photoRepository.save(it)
             }
         }
