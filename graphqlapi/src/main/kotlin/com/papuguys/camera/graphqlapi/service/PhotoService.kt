@@ -4,6 +4,7 @@ import com.papuguys.camera.graphqlapi.model.Photo
 import com.papuguys.camera.graphqlapi.repository.PhotoRepository
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
+import org.springframework.core.io.buffer.DataBuffer
 import org.springframework.data.mongodb.core.MongoOperations
 import org.springframework.stereotype.Component
 import org.springframework.stereotype.Service
@@ -12,6 +13,13 @@ import java.util.*
 import org.springframework.scheduling.annotation.Scheduled
 
 import java.text.SimpleDateFormat
+import java.time.Duration
+import java.util.function.Consumer
+import org.springframework.core.io.buffer.DataBufferUtils
+
+import reactor.core.publisher.Flux
+import java.io.FileOutputStream
+
 
 @Service
 @Component
@@ -27,8 +35,9 @@ class PhotoService(
     fun takePhotoSheduled() {
         photoRepository.findFirstByPathNull()?.let {
             log.info("Taking photo {}", dateFormat.format(Date()))
-            val file = File("pic", "${it.name}${it.timestamp}.png")
-            getExternalPhoto().subscribe { bytes ->
+            val file = File("pic", "${it.id}.png")
+
+            getExternalPhoto().block()?.let { bytes ->
                 file.writeBytes(bytes)
                 it.path = file.path
                 photoRepository.save(it)
